@@ -1,0 +1,186 @@
+@forward "./reset";
+
+// *** VARIABLES -> COLORS ***
+$bg-color: #0d192c;
+$bg-card: #15263f;
+$bg-line: #2e405a;
+
+$color-primary: #fff;
+$color-secondary: #8bacd9;
+
+$color-strong-text: #00fff8;
+
+// *** MIXINS ***
+@mixin flex-center($justify: center, $align: center) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin font-settings($size, $weight: 400) {
+	font-size: $size;
+	font-weight: $weight;
+	font-family: "Outfit", serif;
+}
+
+// *** MAIN STYLES ***
+
+html {
+	@media (max-width: 400px) {
+		font-size: 60%;
+	}
+}
+
+body {
+	height: 100vh;
+	background-color: $bg-color;
+	font-family: "Outfit", serif;
+
+	@include flex-center;
+}
+
+.card {
+	width: 35rem;
+	height: 59.6rem;
+	background-color: $bg-card;
+	border-radius: 1.5rem;
+	padding: 2.4rem;
+
+	&__imgBox {
+		width: 30.2rem;
+		height: 30.2rem;
+		margin-bottom: 2.4rem;
+		position: relative;
+
+		&::before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: linear-gradient(
+				rgba($color-strong-text, 0.5),
+				rgba($color-strong-text, 0.5)
+			);
+			z-index: 5;
+			opacity: 0;
+			transition: all 0.3s ease;
+		}
+
+		&-img {
+			width: 100%;
+			object-fit: cover;
+			border-radius: 0.8rem;
+			position: relative;
+		}
+
+		&-svg {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -40%);
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease;
+			z-index: 100;
+		}
+
+		&:hover::before {
+			opacity: 1;
+		}
+
+		&:hover {
+			.card__imgBox-svg {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	&__heading-link {
+		&:link,
+		&:visited {
+			color: $color-primary;
+
+			@include font-settings(2.2rem, 600);
+
+			transition: color 0.25s ease;
+		}
+
+		&:hover,
+		&:active {
+			color: $color-strong-text;
+		}
+	}
+
+	&__text {
+		color: $color-secondary;
+
+		@include font-settings(1.7rem, 300);
+
+		line-height: 2.6rem;
+	}
+
+	&__price {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 0.1rem solid $bg-line;
+		padding-bottom: 2.4rem;
+
+		&-eth {
+			@include flex-center(null);
+			@include font-settings(1.6rem, 600);
+
+			gap: 0.6rem;
+			color: $color-strong-text;
+		}
+
+		&-timeLeft {
+			@include flex-center(null);
+
+			gap: 0.5rem;
+			color: $color-secondary;
+
+			font-size: 1.6rem;
+		}
+	}
+
+	&__author {
+		@include flex-center(null);
+		gap: 1.2rem;
+
+		&-img {
+			width: 3.3rem;
+			height: 3.3rem;
+			border-radius: 50%;
+			border: 0.1rem solid $color-primary;
+		}
+
+		&-text {
+			color: $color-secondary;
+
+			font-size: 1.6rem;
+		}
+
+		&-name {
+			&:link,
+			&:visited {
+				color: $color-primary;
+				font-size: 1.6rem;
+
+				transition: color 0.25s ease;
+			}
+
+			&:hover,
+			&:active {
+				color: $color-strong-text;
+			}
+		}
+	}
+}
