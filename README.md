@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [https://github.com/Jojo25011990/](https://your-solution-url.com)
--   Live Site URL: [Github Pages](https://your-live-site-url.com)
+-   Solution URL: [https://github.com/Jojo25011990/](https://github.com/Jojo25011990/NFT-preview-card)
+-   Live Site URL: [Github Pages](https://jojo25011990.github.io/NFT-preview-card/)
 
 ## My process
 
